@@ -43,10 +43,10 @@ def get_response(intents_list,intents_json):
             break
     return result
 print('go bot is running')
-while True:
-    message=input("enter a massage:")
-    ints=predict_class(message)
+def predict(massage):
+    massage=input("enter a massage:")
+    ints=predict_class(massage)
     
     res=get_response(ints,intents)
-    print(res)
+    return res 
     
