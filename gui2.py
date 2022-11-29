@@ -6,10 +6,10 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 from keras.models import load_model
 lemmatizer=WordNetLemmatizer()
-intents=json.loads(open('C:/Users/shiva/Desktop/codes/python/PROJECT/AI CHATBOT/Conversation.json').read())
-words=pickle.load(open('C:/Users/shiva/Desktop/codes/python/PROJECT/AI CHATBOT/words.pkl','rb'))
+intents=json.loads(open('Conversation.json').read())
+words=pickle.load(open('words.pkl','rb'))
 model=load_model('chatbot_model.h5')
-classes=pickle.load(open('C:/Users/shiva/Desktop/codes/python/PROJECT/AI CHATBOT/classes.pkl','rb'))
+classes=pickle.load(open('classes.pkl','rb'))
 def clean_up_sentance(sentance):
     sentance_words=nltk.word_tokenize(sentance)
     sentance_words=[lemmatizer.lemmatize(word) for word in sentance_words]
@@ -44,7 +44,6 @@ def get_response(intents_list,intents_json):
     return result
 print('go bot is running')
 def predict(massage):
-    massage=input("enter a massage:")
     ints=predict_class(massage)
     
     res=get_response(ints,intents)
